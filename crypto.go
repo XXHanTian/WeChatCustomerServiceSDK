@@ -32,3 +32,13 @@ func (r *Client) DecryptMsg(options CryptoOptions, postData []byte) ([]byte, err
 	}
 	return message, nil
 }
+
+// 加密消息
+func (r *Client) EncryptMsg(options CryptoOptions, postData []byte) ([]byte, error) {
+	wxCpt := crypto.NewWXBizMsgCrypt(r.token, r.encodingAESKey, r.corpID, crypto.XmlType)
+	message, status := wxCpt.EncryptMsg(string(postData), options.TimeStamp, options.Nonce)
+	if status != nil && status.ErrCode != 0 {
+		return nil, errors.New(status.ErrMsg)
+	}
+	return message, nil
+}
