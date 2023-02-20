@@ -16,66 +16,66 @@ type Message struct {
 }
 
 // GetOriginMessage 获取原始消息
-func (r Message) GetOriginMessage() (info []byte) {
+func (r *Message) GetOriginMessage() (info []byte) {
 	return r.OriginData
 }
 
 // GetTextMessage 获取文本消息
-func (r Message) GetTextMessage() (info Text, err error) {
+func (r *Message) GetTextMessage() (info Text, err error) {
 	err = json.Unmarshal(r.OriginData, &info)
 	return info, err
 }
 
 // GetImageMessage 获取图片消息
-func (r Message) GetImageMessage() (info Image, err error) {
+func (r *Message) GetImageMessage() (info Image, err error) {
 	err = json.Unmarshal(r.OriginData, &info)
 	return info, err
 }
 
 // GetVoiceMessage 获取语音消息
-func (r Message) GetVoiceMessage() (info Voice, err error) {
+func (r *Message) GetVoiceMessage() (info Voice, err error) {
 	err = json.Unmarshal(r.OriginData, &info)
 	return info, err
 }
 
 // GetVideoMessage 获取视频消息
-func (r Message) GetVideoMessage() (info Video, err error) {
+func (r *Message) GetVideoMessage() (info Video, err error) {
 	err = json.Unmarshal(r.OriginData, &info)
 	return info, err
 }
 
 // GetFileMessage 获取文件消息
-func (r Message) GetFileMessage() (info File, err error) {
+func (r *Message) GetFileMessage() (info File, err error) {
 	err = json.Unmarshal(r.OriginData, &info)
 	return info, err
 }
 
 // GetLocationMessage 获取文件消息
-func (r Message) GetLocationMessage() (info Location, err error) {
+func (r *Message) GetLocationMessage() (info Location, err error) {
 	err = json.Unmarshal(r.OriginData, &info)
 	return info, err
 }
 
 // GetLinkMessage 获取链接消息
-func (r Message) GetLinkMessage() (info Link, err error) {
+func (r *Message) GetLinkMessage() (info Link, err error) {
 	err = json.Unmarshal(r.OriginData, &info)
 	return info, err
 }
 
 // GetBusinessCardMessage 获取名片消息
-func (r Message) GetBusinessCardMessage() (info BusinessCard, err error) {
+func (r *Message) GetBusinessCardMessage() (info BusinessCard, err error) {
 	err = json.Unmarshal(r.OriginData, &info)
 	return info, err
 }
 
 // GetMiniProgramMessage 获取小程序消息
-func (r Message) GetMiniProgramMessage() (info MiniProgram, err error) {
+func (r *Message) GetMiniProgramMessage() (info MiniProgram, err error) {
 	err = json.Unmarshal(r.OriginData, &info)
 	return info, err
 }
 
 // GetEnterSessionEvent 用户进入会话事件
-func (r Message) GetEnterSessionEvent() (info EnterSessionEvent, err error) {
+func (r *Message) GetEnterSessionEvent() (info EnterSessionEvent, err error) {
 	err = json.Unmarshal(r.OriginData, &info)
 	info.OpenKFID = info.Event.OpenKFID
 	info.ExternalUserID = info.Event.ExternalUserID
@@ -83,19 +83,19 @@ func (r Message) GetEnterSessionEvent() (info EnterSessionEvent, err error) {
 }
 
 // GetMsgSendFailEvent 消息发送失败事件
-func (r Message) GetMsgSendFailEvent() (info MsgSendFailEvent, err error) {
+func (r *Message) GetMsgSendFailEvent() (info MsgSendFailEvent, err error) {
 	err = json.Unmarshal(r.OriginData, &info)
 	return info, err
 }
 
 // GetReceptionistStatusChangeEvent 客服人员接待状态变更事件
-func (r Message) GetReceptionistStatusChangeEvent() (info ReceptionistStatusChangeEvent, err error) {
+func (r *Message) GetReceptionistStatusChangeEvent() (info ReceptionistStatusChangeEvent, err error) {
 	err = json.Unmarshal(r.OriginData, &info)
 	return info, err
 }
 
 // GetSessionStatusChangeEvent 会话状态变更事件
-func (r Message) GetSessionStatusChangeEvent() (info SessionStatusChangeEvent, err error) {
+func (r *Message) GetSessionStatusChangeEvent() (info SessionStatusChangeEvent, err error) {
 	err = json.Unmarshal(r.OriginData, &info)
 	info.OpenKFID = info.Event.OpenKFID
 	info.ExternalUserID = info.Event.ExternalUserID
